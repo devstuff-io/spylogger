@@ -33,7 +33,7 @@ The configured logger name. Available loggers:
 
 ``SPY_LOG_LEVEL``
 
-The python log level. See the [docs](https://docs.python.org/2/howto/logging.html#logging-levels)
+The python log level. See the docs_
 
 .. code-block:: python
 
@@ -44,3 +44,5 @@ Authors
 =======
 
 See contributors section on GitHub.
+
+.. _docs: https://docs.python.org/2/howto/logging.html#logging-levels
