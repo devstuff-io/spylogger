@@ -1,4 +1,3 @@
-import os
 from pip.req import parse_requirements
 from pip.download import PipSession
 from setuptools import setup
@@ -8,7 +7,7 @@ INSTALL_REQS = parse_requirements('requirements.pip', session=PipSession())
 setup(
     name='spylogger',
     packages=['spylogger'],
-    version=open('VERSION').read().strip(),
+    version='1.0.3',
     include_package_data=True,
     description='Python logging library',
     long_description=open('README.rst').read(),
