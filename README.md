@@ -14,7 +14,7 @@ Python logging handler for SPS libraries.
 ## Installation
 
 ```bash
-pip install 
+pip install -e git+git@github.com:SPSCommerce/spylogger.git#egg=spylogger
 ```
 
 ---
