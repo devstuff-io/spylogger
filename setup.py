@@ -13,7 +13,7 @@ setup(
     version=VERSION,
     include_package_data=True,
     description='Python logging library',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     url='https://github.com/SPSCommerce/spylogger',
     author='meganlkm',
     author_email='mwood@spscommerce.com',
