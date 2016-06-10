@@ -1,6 +1,6 @@
 # spylogger
 
-Python logging handler for SPS libraries.
+Generic python logging library.
 
 * [Installation](#installation)
 * [Usage](#usage)
