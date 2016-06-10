@@ -7,18 +7,18 @@ Generic python logging library.
 Installation
 ============
 
-Using pip::
+.. code-block:: python
 
    pip install spylogger
 
 Usage
 =====
 
+.. code-block:: python
 
    from spylogger import get_logger
    logger = get_logger()
    logger.info({'string': 'test Pretty info message.', 'int': 42, 'bool': True})
-
 
 
 **Environment Variables:**
@@ -35,6 +35,7 @@ The configured logger name. Available loggers:
 
 The python log level. See the [docs](https://docs.python.org/2/howto/logging.html#logging-levels)
 
+.. code-block:: python
 
    get_logger(name=SPY_LOG_LOGGER, log_level=SPY_LOG_LEVEL)
 
