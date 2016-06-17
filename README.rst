@@ -43,11 +43,11 @@ The python log level. See the docs_
 ``SPY_JSON_LOG_KEYS``
 
 A list of log record keys to put in the ``__meta`` section of the log message.
-Default: threadName, process, args, module, levelname, pathname, lineno, funcName
+**Default**: ``threadName``, ``process``, ``args``, ``module``, ``levelname``, ``pathname``, ``lineno``, ``funcName``
 
 ``SPY_SHOW_META``
 
-Flag for showing the ``__meta`` output. Default: True
+Flag for showing the ``__meta`` output. **Default**: True
 
 Authors
 =======
