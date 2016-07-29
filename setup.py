@@ -1,6 +1,5 @@
 from setuptools import setup
 
-
 setup(
     name='spylogger',
     packages=['spylogger'],
@@ -11,8 +10,11 @@ setup(
     url='https://github.com/SPSCommerce/spylogger',
     author='meganlkm',
     author_email='webapps@spscommerce.com',
-    install_requires=['Pygments', 'pygments-json'],
-    keywords=['logging'],
+    install_requires=[],
+    extras_require={
+        'pretty': ['Pygments', 'pygments-json']
+    },
+    keywords=['logging', 'logs', 'pretty'],
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',

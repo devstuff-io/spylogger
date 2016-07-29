@@ -2,12 +2,12 @@ from spylogger import get_logger
 from datetime import datetime
 
 log_level = 'DEBUG'
-logger = get_logger('pretty', log_level)
+# logger = get_logger('pretty', log_level)
 # logger = get_logger('json', log_level)
 # logger = get_logger('json-flat', log_level)
 # logger = get_logger('json-src-key', log_level)
 # logger = get_logger('ugly', log_level)
-# logger = get_logger()
+logger = get_logger()
 
 logger.error('test error log message.')
 logger.info({'string': 'test info log message.', 'int': 42, 'bool': True})

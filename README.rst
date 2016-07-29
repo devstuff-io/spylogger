@@ -5,80 +5,152 @@ Generic python logging library.
 
 
 Installation
-============
+------------
+
+basic loggers
+.............
+
+This installs spylogger only and will load the loggers with no external dependency requirements.
 
 .. code-block:: python
 
    pip install spylogger
 
+
+pretty loggers
+..............
+
+This installs spylogger, pygments, and pygments-json and loads the basic loggers along with pretty loggers.
+
+.. code-block:: python
+
+   pip install spylogger[pretty]
+
+
+Configuration
+-------------
+
+Environment Variables
+.....................
+
++------------------------+-------------------------------------------------+-------------------+
+| Name                   | Description                                     | Default           |
++========================+=================================================+===================+
+| ``SPY_LOG_LOGGER``     | The configured logger name.                     | json-flat         |
+|                        | Available loggers:                              |                   |
+|                        |                                                 |                   |
+|                        | * json-flat (Default)                           |                   |
+|                        | * json                                          |                   |
+|                        | * json-src-key                                  |                   |
+|                        | * pretty                                        |                   |
+|                        | * ugly                                          |                   |
++------------------------+-------------------------------------------------+-------------------+
+| ``SPY_LOG_LEVEL``      | The python log level.                           | WARNING           |
+|                        | See the docs_                                   |                   |
++------------------------+-------------------------------------------------+-------------------+
+| ``SPY_JSON_LOG_KEYS``  | A list of log record keys to put in the         | - ``args``        |
+|                        | ``__meta`` section of the log message.          | - ``funcName``    |
+|                        |                                                 | - ``levelname``   |
+|                        |                                                 | - ``lineno``      |
+|                        | **Available Keys**:                             | - ``module``      |
+|                        |                                                 | - ``pathname``    |
+|                        | * ``args``                                      | - ``process``     |
+|                        | * ``created``                                   | - ``threadName``  |
+|                        | * ``exc_info``                                  |                   |
+|                        | * ``exc_text``                                  |                   |
+|                        | * ``filename``                                  |                   |
+|                        | * ``funcName``                                  |                   |
+|                        | * ``levelname``                                 |                   |
+|                        | * ``levelno``                                   |                   |
+|                        | * ``lineno``                                    |                   |
+|                        | * ``module``                                    |                   |
+|                        | * ``msecs``                                     |                   |
+|                        | * ``msg``                                       |                   |
+|                        | * ``name``                                      |                   |
+|                        | * ``pathname``                                  |                   |
+|                        | * ``process``                                   |                   |
+|                        | * ``processName``                               |                   |
+|                        | * ``relativeCreated``                           |                   |
+|                        | * ``thread``                                    |                   |
+|                        | * ``threadName``                                |                   |
+|                        |                                                 |                   |
+|                        | See the python docs_                            |                   |
++------------------------+-------------------------------------------------+-------------------+
+| ``SPY_SHOW_META``      | Flag for showing the ``__meta`` output.         | True              |
++------------------------+-------------------------------------------------+-------------------+
+
+Pretty Formatter Styles
+.......................
+
+See the pygments documentation_
+
+
+**Available styles**
+
++ algol
++ algol_nu
++ autumn
++ borland
++ bw
++ colorful
++ default
++ emacs
++ friendly
++ fruity
++ igor
++ lovelace
++ manni
++ monokai
++ murphy
++ native
++ paraiso-dark
++ paraiso-light
++ pastie
++ perldoc
++ rrt
++ tango
++ trac
++ vim
++ vs
++ xcode
+
+
+**Environment Variables**
+
++--------------------------------+----------+
+| Name                           | Default  |
++================================+==========+
+| ``SPY_LOG_FORMATTER_DEBUG``    | autumn   |
++--------------------------------+----------+
+| ``SPY_LOG_FORMATTER_INFO``     | monokai  |
++--------------------------------+----------+
+| ``SPY_LOG_FORMATTER_WARNING``  | fruity   |
++--------------------------------+----------+
+| ``SPY_LOG_FORMATTER_ERROR``    | default  |
++--------------------------------+----------+
+| ``SPY_LOG_FORMATTER_CRITICAL`` | vs       |
++--------------------------------+----------+
+
+
 Usage
-=====
+-----
 
 .. code-block:: python
 
    from spylogger import get_logger
+
+   # get_logger(name=SPY_LOG_LOGGER, log_level=SPY_LOG_LEVEL)
    logger = get_logger()
+
    logger.info({'string': 'test Pretty info message.', 'int': 42, 'bool': True})
 
 
-**Environment Variables:**
-
-``SPY_LOG_LOGGER``
-
-The configured logger name. Available loggers:
-
-* json-flat (Default)
-* json
-* json-src-key
-* pretty
-* ugly
-
-
-``SPY_LOG_LEVEL``
-
-The python log level. See the docs_
-
-.. code-block:: python
-
-   get_logger(name=SPY_LOG_LOGGER, log_level=SPY_LOG_LEVEL)
-
-
-``SPY_JSON_LOG_KEYS``
-
-A list of log record keys to put in the ``__meta`` section of the log message.
-
-**Available Keys**:
-
-* ``args``
-* ``created``
-* ``exc_info``
-* ``exc_text``
-* ``filename``
-* ``funcName``
-* ``levelname``
-* ``levelno``
-* ``lineno``
-* ``module``
-* ``msecs``
-* ``msg``
-* ``name``
-* ``pathname``
-* ``process``
-* ``processName``
-* ``relativeCreated``
-* ``thread``
-* ``threadName``
-
-**Default**: ``args``, ``funcName``, ``levelname``, ``lineno``, ``module``, ``pathname``, ``process``, ``threadName``
-
-
-``SPY_SHOW_META``
-
-Flag for showing the ``__meta`` output. **Default**: True
+More examples are in example.py.
 
 Authors
-=======
+-------
 
 See contributors section on GitHub.
 
 .. _docs: https://docs.python.org/2/howto/logging.html#logging-levels
+.. _documentation: http://pygments.org/docs/styles/
