@@ -48,16 +48,18 @@ Environment Variables
 | ``SPY_LOG_LEVEL``      | The python log level.                           | WARNING           |
 |                        | See the docs_                                   |                   |
 +------------------------+-------------------------------------------------+-------------------+
-| ``SPY_JSON_LOG_KEYS``  | A list of log record keys to put in the         | - ``args``        |
-|                        | ``__meta`` section of the log message.          | - ``funcName``    |
-|                        |                                                 | - ``levelname``   |
+| ``SPY_SHOW_META``      | Flag for showing the ``__meta`` output.         | True              |
++------------------------+-------------------------------------------------+-------------------+
+| ``SPY_JSON_LOG_KEYS``  | A list of log record keys to put in the         |                   |
+|                        | ``__meta`` section of the log message.          |                   |
+|                        |                                                 | - ``args``        |
+|                        |                                                 | - ``funcName``    |
+|                        | **Available Keys**:                             | - ``levelname``   |
 |                        |                                                 | - ``lineno``      |
-|                        | **Available Keys**:                             | - ``module``      |
-|                        |                                                 | - ``pathname``    |
-|                        | * ``args``                                      | - ``process``     |
-|                        | * ``created``                                   | - ``threadName``  |
-|                        | * ``exc_info``                                  |                   |
-|                        | * ``exc_text``                                  |                   |
+|                        | * ``args``                                      | - ``module``      |
+|                        | * ``created``                                   | - ``pathname``    |
+|                        | * ``exc_info``                                  | - ``process``     |
+|                        | * ``exc_text``                                  | - ``threadName``  |
 |                        | * ``filename``                                  |                   |
 |                        | * ``funcName``                                  |                   |
 |                        | * ``levelname``                                 |                   |
@@ -76,13 +78,28 @@ Environment Variables
 |                        |                                                 |                   |
 |                        | See the python docs_                            |                   |
 +------------------------+-------------------------------------------------+-------------------+
-| ``SPY_SHOW_META``      | Flag for showing the ``__meta`` output.         | True              |
-+------------------------+-------------------------------------------------+-------------------+
 
 Pretty Formatter Styles
 .......................
 
 See the pygments documentation_
+
+
+**Environment Variables**
+
++--------------------------------+----------+
+| Name                           | Default  |
++================================+==========+
+| ``SPY_LOG_FORMATTER_DEBUG``    | autumn   |
++--------------------------------+----------+
+| ``SPY_LOG_FORMATTER_INFO``     | monokai  |
++--------------------------------+----------+
+| ``SPY_LOG_FORMATTER_WARNING``  | fruity   |
++--------------------------------+----------+
+| ``SPY_LOG_FORMATTER_ERROR``    | default  |
++--------------------------------+----------+
+| ``SPY_LOG_FORMATTER_CRITICAL`` | vs       |
++--------------------------------+----------+
 
 
 **Available styles**
@@ -115,23 +132,6 @@ See the pygments documentation_
 + xcode
 
 
-**Environment Variables**
-
-+--------------------------------+----------+
-| Name                           | Default  |
-+================================+==========+
-| ``SPY_LOG_FORMATTER_DEBUG``    | autumn   |
-+--------------------------------+----------+
-| ``SPY_LOG_FORMATTER_INFO``     | monokai  |
-+--------------------------------+----------+
-| ``SPY_LOG_FORMATTER_WARNING``  | fruity   |
-+--------------------------------+----------+
-| ``SPY_LOG_FORMATTER_ERROR``    | default  |
-+--------------------------------+----------+
-| ``SPY_LOG_FORMATTER_CRITICAL`` | vs       |
-+--------------------------------+----------+
-
-
 Usage
 -----
 
@@ -145,12 +145,14 @@ Usage
    logger.info({'string': 'test Pretty info message.', 'int': 42, 'bool': True})
 
 
-More examples are in example.py.
+More examples are in example.py
+
 
 Authors
 -------
 
 See contributors section on GitHub.
+
 
 .. _docs: https://docs.python.org/2/howto/logging.html#logging-levels
 .. _documentation: http://pygments.org/docs/styles/
