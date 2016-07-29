@@ -4,14 +4,14 @@ from setuptools import setup
 setup(
     name='spylogger',
     packages=['spylogger'],
-    version='1.0.5',
+    version='1.0.6',
     include_package_data=True,
     description='Python logging library',
     long_description=open('README.rst').read(),
     url='https://github.com/SPSCommerce/spylogger',
     author='meganlkm',
     author_email='webapps@spscommerce.com',
-    install_requires=[],
+    install_requires=['Pygments', 'pygments-json'],
     keywords=['logging'],
     classifiers=[
         'Intended Audience :: Developers',

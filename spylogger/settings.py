@@ -1,15 +1,36 @@
 import os
 
+ENV_PREFIX = 'SPY_'
+
+
+def get_env(name, default):
+    return os.getenv('{prefix}{variable}'.format(prefix=ENV_PREFIX, variable=name), default)
+
+
 JSON_DEFAULT_LOG_KEYS = ['threadName', 'process', 'args', 'module', 'levelname', 'pathname', 'lineno', 'funcName']
-JSON_LOG_KEYS = os.getenv('SPY_JSON_LOG_KEYS', JSON_DEFAULT_LOG_KEYS)
+JSON_LOG_KEYS = get_env('JSON_LOG_KEYS', JSON_DEFAULT_LOG_KEYS)
 if not isinstance(JSON_LOG_KEYS, list):
     try:
         JSON_LOG_KEYS = JSON_LOG_KEYS.split(',')
     except:
         JSON_LOG_KEYS = JSON_DEFAULT_LOG_KEYS
 
-LOG_LOGGER = os.getenv('SPY_LOG_LOGGER', 'json-flat')
-LOG_LEVEL = os.getenv('SPY_LOG_LEVEL', 'ERROR')
+
+SHOW_META = get_env('SHOW_META', True)
+if isinstance(SHOW_META, str):
+    SHOW_META = 'true' in [SHOW_META.lower()]
+
+
+LOG_FORMATTER_DEBUG = get_env('LOG_FORMATTER_DEBUG', 'autumn')
+LOG_FORMATTER_INFO = get_env('LOG_FORMATTER_INFO', 'monokai')
+LOG_FORMATTER_WARNING = get_env('LOG_FORMATTER_WARNING', 'fruity')
+LOG_FORMATTER_ERROR = get_env('LOG_FORMATTER_ERROR', 'default')
+LOG_FORMATTER_CRITICAL = get_env('LOG_FORMATTER_CRITICAL', 'vs')
+
+
+LOG_LOGGER = get_env('LOG_LOGGER', 'json-flat')
+LOG_LEVEL = get_env('LOG_LEVEL', 'ERROR')
+
 
 LOGGING = {
     'version': 1,
@@ -18,6 +39,7 @@ LOGGING = {
         'json': {'()': 'spylogger.formatters.JSONPrettifiedLogFormatter'},
         'json-flat': {'()': 'spylogger.formatters.JSONLogFormatter'},
         'json-src-key': {'()': 'spylogger.formatters.SrcLocationAsKeyLogFormatter'},
+        'pretty': {'()': 'spylogger.formatters.PrettyJSONLogFormatter'},
         "ugly": {"format": "%(asctime)s %(levelname)s: %(module)s.%(funcName)s:%(lineno)d  [%(message)s]"}
     },
     'handlers': {
@@ -31,6 +53,12 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'level': 'DEBUG',
             'formatter': 'json-src-key',
+            'stream': 'ext://sys.stdout'
+        },
+        'pretty': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'formatter': 'pretty',
             'stream': 'ext://sys.stdout'
         },
         'cw': {
@@ -50,10 +78,7 @@ LOGGING = {
         'json-flat': {'level': LOG_LEVEL, 'handlers': ['cw']},
         'json': {'level': LOG_LEVEL, 'handlers': ['json']},
         'json-src-key': {'level': LOG_LEVEL, 'handlers': ['json-src-key']},
+        'pretty': {'level': LOG_LEVEL, 'handlers': ['pretty']},
         'ugly': {'level': LOG_LEVEL, 'handlers': ['ugly']},
     }
 }
-
-SHOW_META = os.getenv('SPY_SHOW_META', True)
-if isinstance(SHOW_META, str):
-    SHOW_META = 'true' in [SHOW_META.lower()]
