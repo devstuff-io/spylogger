@@ -9,7 +9,7 @@ try:
 except ImportError:
     import json
 
-from spylogger.settings import JSON_LOG_KEYS, SHOW_META
+from spylogger import settings
 
 
 class BaseLogFormatter(Formatter):
@@ -20,14 +20,14 @@ class BaseLogFormatter(Formatter):
     def get_meta(self, record):
         meta = {}
         for key in record.__dict__.keys():
-            if key in JSON_LOG_KEYS:
+            if key in settings.JSON_LOG_KEYS:
                 meta[key] = record.__dict__.get(key)
         return meta
 
     def get_msg(self, record):
         return deepcopy(record.__dict__.get('msg'))
 
-    def build_msg(self, record, show_meta=SHOW_META):
+    def build_msg(self, record, show_meta=settings.SHOW_META):
         logmsg = self.get_msg(record)
         if show_meta:
             if not isinstance(logmsg, Mapping):
@@ -51,9 +51,6 @@ class JSONBaseLogFormatter(BaseLogFormatter):
 
     divider = '\033[1;30m{}\033[0m'.format('.' * 53)
 
-    def get_src_location_string(self, record):
-        return '%s.%s:%d' % (record.__dict__.get('module'), record.__dict__.get('funcName'), record.__dict__.get('lineno'))
-
     def get_message_divider(self, record, msg=''):
         div = '==={0:{fill}<50}'.format(msg, fill='=')
         return '\033[1;30m{}\033[0m'.format(div)
@@ -64,36 +61,16 @@ class JSONBaseLogFormatter(BaseLogFormatter):
         except TypeError:
             return logmsg
 
-    def get_meta(self, record):
-        meta = {}
-        for key in record.__dict__.keys():
-            if key in JSON_LOG_KEYS:
-                meta[key] = record.__dict__.get(key)
-        return meta
-
     def dumps(self, logmsg, json_dumps_opts=dict()):
         return json.dumps(logmsg, **json_dumps_opts)
-
-    @classmethod
-    def format_timestamp(cls, time):
-        tstamp = datetime.utcfromtimestamp(time)
-        return tstamp.strftime("%Y-%m-%dT%H:%M:%S") + ".%03d" % (tstamp.microsecond / 1000) + "Z"
-
-    @classmethod
-    def serialize(cls, message):
-        if sys.version_info < (3, 0):
-            return json.dumps(message)
-        return bytes(json.dumps(message), 'utf-8')
 
 
 class JSONLogFormatter(JSONBaseLogFormatter):
 
     def format(self, record):
-        logmsg = self.build_msg(record)
-
         record.msg = "{div}\n{msg}\n{hr}".format(
             div=self.get_message_divider(record, self.get_src_location_string(record)),
-            msg=self.format_msg(logmsg),
+            msg=self.format_msg(self.build_msg(record)),
             hr=self.divider
         )
         return super(JSONLogFormatter, self).format(record)

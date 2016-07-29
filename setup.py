@@ -1,10 +1,9 @@
 from setuptools import setup
 
-
 setup(
     name='spylogger',
     packages=['spylogger'],
-    version='1.0.5',
+    version='1.1.0',
     include_package_data=True,
     description='Python logging library',
     long_description=open('README.rst').read(),
@@ -12,7 +11,10 @@ setup(
     author='meganlkm',
     author_email='webapps@spscommerce.com',
     install_requires=[],
-    keywords=['logging'],
+    extras_require={
+        'pretty': ['Pygments', 'pygments-json']
+    },
+    keywords=['logging', 'logs', 'pretty'],
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
