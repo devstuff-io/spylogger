@@ -107,7 +107,7 @@ See the pygments documentation_
 
 **Available styles**
 
-from a python console:
+from a python shell:
 
 .. code-block:: python
 
