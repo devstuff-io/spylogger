@@ -3,6 +3,7 @@ from datetime import datetime
 
 log_level = 'DEBUG'
 # logger = get_logger('pretty', log_level)
+# logger = get_logger('pretty-no-meta', log_level)
 # logger = get_logger('json', log_level)
 # logger = get_logger('json-flat', log_level)
 # logger = get_logger('json-src-key', log_level)

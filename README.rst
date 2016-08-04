@@ -45,6 +45,7 @@ Environment Variables
 |                        | * json                                          |                   |
 |                        | * json-src-key                                  |                   |
 |                        | * pretty                                        |                   |
+|                        | * pretty-no-meta                                |                   |
 |                        | * ugly                                          |                   |
 +------------------------+-------------------------------------------------+-------------------+
 | ``SPY_LOG_LEVEL``      | The python log level.                           | WARNING           |
@@ -106,32 +107,12 @@ See the pygments documentation_
 
 **Available styles**
 
-+ algol
-+ algol_nu
-+ autumn
-+ borland
-+ bw
-+ colorful
-+ default
-+ emacs
-+ friendly
-+ fruity
-+ igor
-+ lovelace
-+ manni
-+ monokai
-+ murphy
-+ native
-+ paraiso-dark
-+ paraiso-light
-+ pastie
-+ perldoc
-+ rrt
-+ tango
-+ trac
-+ vim
-+ vs
-+ xcode
+from a python console:
+
+.. code-block:: python
+
+   from pygments.styles import get_all_styles
+   list(get_all_styles())
 
 
 Usage
