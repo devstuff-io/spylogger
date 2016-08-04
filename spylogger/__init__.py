@@ -13,6 +13,15 @@ try:
         'stream': 'ext://sys.stdout'
     }
     LOGGING['loggers']['pretty'] = {'level': LOG_LEVEL, 'handlers': ['pretty']}
+
+    LOGGING['formatters']['pretty-no-meta'] = {'()': 'spylogger.pretty.NoMetaPrettyJSONLogFormatter'}
+    LOGGING['handlers']['pretty-no-meta'] = {
+        'class': 'logging.StreamHandler',
+        'level': 'DEBUG',
+        'formatter': 'pretty-no-meta',
+        'stream': 'ext://sys.stdout'
+    }
+    LOGGING['loggers']['pretty-no-meta'] = {'level': LOG_LEVEL, 'handlers': ['pretty-no-meta']}
 except ImportError:
     pass
 
