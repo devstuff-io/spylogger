@@ -107,12 +107,9 @@ See the pygments documentation_
 
 **Available styles**
 
-from a python shell:
+.. code-block:: shell
 
-.. code-block:: python
-
-   from pygments.styles import get_all_styles
-   list(get_all_styles())
+   python -c "from pygments.styles import get_all_styles;print list(get_all_styles())"
 
 
 Usage
