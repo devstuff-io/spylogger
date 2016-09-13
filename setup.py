@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='spylogger',
     packages=['spylogger'],
-    version='1.1.1',
+    version='1.1.2',
     include_package_data=True,
     description='Python logging library',
     long_description=open('README.rst').read(),
