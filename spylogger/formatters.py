@@ -25,7 +25,10 @@ class BaseLogFormatter(Formatter):
         return meta
 
     def get_msg(self, record):
-        return deepcopy(record.__dict__.get('msg'))
+        try:
+            return deepcopy(record.__dict__.get('msg'))
+        except:
+            return record.__dict__.get('msg')
 
     def build_msg(self, record, show_meta=settings.SHOW_META):
         logmsg = self.get_msg(record)
