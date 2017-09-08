@@ -3,7 +3,7 @@ spylogger
 
 Generic python logging library.
 
-Documentation: https://github.com/SPSCommerce/spylogger
+Documentation: https://github.com/devstuff-io/spylogger
 
 
 Installation
