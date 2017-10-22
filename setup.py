@@ -7,9 +7,9 @@ setup(
     include_package_data=True,
     description='Python logging library',
     long_description=open('README.rst').read(),
-    url='https://github.com/SPSCommerce/spylogger',
+    url='https://github.com/devstuff-io/spylogger',
     author='meganlkm',
-    author_email='webapps@spscommerce.com',
+    author_email='devstuff.io@gmail.com',
     install_requires=[],
     extras_require={
         'pretty': ['Pygments', 'pygments-json']
