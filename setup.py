@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='spylogger',
     packages=['spylogger'],
-    version='1.2.0',
+    version='1.2.1',
     include_package_data=True,
     description='Python logging library',
     long_description=open('README.rst').read(),
@@ -12,7 +12,11 @@ setup(
     author_email='devstuff.io@gmail.com',
     install_requires=[],
     extras_require={
-        'pretty': ['Pygments', 'pygments-json']
+        'pretty': [
+            'Pygments',
+            'pygments-json',
+            'pygments-solarized'
+        ]
     },
     keywords=['logging', 'logs', 'pretty'],
     classifiers=[
