@@ -14,7 +14,7 @@ basic loggers
 
 This installs spylogger only and will load the loggers with no external dependency requirements.
 
-.. code-block:: python
+.. code-block:: shell
 
    pip install spylogger
 
@@ -24,7 +24,7 @@ pretty loggers
 
 This installs spylogger, pygments, and pygments-json and loads the basic loggers along with pretty loggers.
 
-.. code-block:: python
+.. code-block:: shell
 
    pip install spylogger[pretty]
 
