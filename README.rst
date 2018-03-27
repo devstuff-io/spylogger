@@ -43,6 +43,7 @@ Environment Variables
 |                        |                                                 |                   |
 |                        | * json-flat (Default)                           |                   |
 |                        | * json                                          |                   |
+|                        | * json-clean                                    |                   |
 |                        | * json-src-key                                  |                   |
 |                        | * pretty                                        |                   |
 |                        | * pretty-no-meta                                |                   |
