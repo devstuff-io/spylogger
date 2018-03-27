@@ -38,6 +38,7 @@ LOGGING = {
     'formatters': {
         'json': {'()': 'spylogger.formatters.JSONPrettifiedLogFormatter'},
         'json-flat': {'()': 'spylogger.formatters.JSONLogFormatter'},
+        'json-clean': {'()': 'spylogger.formatters.JSONCleanLogFormatter'},
         'json-src-key': {'()': 'spylogger.formatters.SrcLocationAsKeyLogFormatter'},
         "ugly": {"format": "%(asctime)s %(levelname)s: %(module)s.%(funcName)s:%(lineno)d  [%(message)s]"}
     },
@@ -46,6 +47,12 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'level': 'DEBUG',
             'formatter': 'json',
+            'stream': 'ext://sys.stdout'
+        },
+        'json-clean': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'formatter': 'json-clean',
             'stream': 'ext://sys.stdout'
         },
         'json-src-key': {
@@ -69,6 +76,7 @@ LOGGING = {
     },
     'loggers': {
         'json-flat': {'level': LOG_LEVEL, 'handlers': ['cw']},
+        'json-clean': {'level': LOG_LEVEL, 'handlers': ['json-clean']},
         'json': {'level': LOG_LEVEL, 'handlers': ['json']},
         'json-src-key': {'level': LOG_LEVEL, 'handlers': ['json-src-key']},
         'ugly': {'level': LOG_LEVEL, 'handlers': ['ugly']},

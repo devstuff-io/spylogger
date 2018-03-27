@@ -79,6 +79,13 @@ class JSONLogFormatter(JSONBaseLogFormatter):
         return super(JSONLogFormatter, self).format(record)
 
 
+class JSONCleanLogFormatter(JSONBaseLogFormatter):
+
+    def format(self, record):
+        record.msg = self.format_msg(self.build_msg(record))
+        return super(JSONCleanLogFormatter, self).format(record)
+
+
 class JSONPrettifiedLogFormatter(JSONLogFormatter):
 
     def dumps(self, logmsg):
