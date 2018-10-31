@@ -9,4 +9,5 @@ with_doctest="--with-doctest"
 
 test -z $1 || dotests="--tests=${1}"
 
+pip install -r requirements-test.pip
 exec nosetests ${with_rednose} -s -v ${with_doctest} ${with_coverage} --where ${BASE_DIR}/tests ${dotests}
