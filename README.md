@@ -1,41 +1,38 @@
 [![Build Status](https://travis-ci.org/devstuff-io/spylogger.svg?branch=master)](https://travis-ci.org/devstuff-io/spylogger)
 
-spylogger
-=========
+# spylogger
 
 Generic python logging library.
 
-Documentation: https://github.com/devstuff-io/spylogger
+## Documentation:
+
+- https://github.com/devstuff-io/spylogger
+- https://docs.python.org/2/howto/logging.html#logging-levels
 
 
-Installation
-------------
+## Installation
 
-basic loggers
-.............
+### basic loggers
 
 This installs spylogger only and will load the loggers with no external dependency requirements.
 
-.. code-block:: shell
+```bash
+pip install spylogger
+```
 
-   pip install spylogger
 
-
-pretty loggers
-..............
+### pretty loggers
 
 This installs spylogger, pygments, and pygments-json and loads the basic loggers along with pretty loggers.
 
-.. code-block:: shell
+```bash
+pip install spylogger[pretty]
+```
 
-   pip install spylogger[pretty]
 
+## Configuration
 
-Configuration
--------------
-
-Environment Variables
-.....................
+### Environment Variables
 
 +------------------------+-------------------------------------------------+-------------------+
 | Name                   | Description                                     | Default           |
@@ -81,14 +78,11 @@ Environment Variables
 |                        | * ``relativeCreated``                           |                   |
 |                        | * ``thread``                                    |                   |
 |                        | * ``threadName``                                |                   |
-|                        |                                                 |                   |
-|                        | See the python docs_                            |                   |
 +------------------------+-------------------------------------------------+-------------------+
 
-Pretty Formatter Styles
-.......................
+### Pretty Formatter Styles
 
-See the pygments documentation_
+See the [pygments documentation](http://pygments.org/docs/styles/)
 
 
 **Environment Variables**
@@ -110,32 +104,25 @@ See the pygments documentation_
 
 **Available styles**
 
-.. code-block:: shell
+```bash
+python -c "from pygments.styles import get_all_styles;print list(get_all_styles())"
+```
 
-   python -c "from pygments.styles import get_all_styles;print list(get_all_styles())"
 
+## Usage
 
-Usage
------
+```python
+from spylogger import get_logger
 
-.. code-block:: python
+# get_logger(name=SPY_LOG_LOGGER, log_level=SPY_LOG_LEVEL)
+logger = get_logger()
 
-   from spylogger import get_logger
-
-   # get_logger(name=SPY_LOG_LOGGER, log_level=SPY_LOG_LEVEL)
-   logger = get_logger()
-
-   logger.info({'string': 'test Pretty info message.', 'int': 42, 'bool': True})
-
+logger.info({'string': 'test Pretty info message.', 'int': 42, 'bool': True})
+```
 
 More examples are in example.py
 
 
-Authors
--------
+## Authors
 
 See contributors section on GitHub.
-
-
-.. _docs: https://docs.python.org/2/howto/logging.html#logging-levels
-.. _documentation: http://pygments.org/docs/styles/
