@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/devstuff-io/spylogger.svg?branch=master)](https://travis-ci.org/devstuff-io/spylogger)
+
 spylogger
 =========
 
